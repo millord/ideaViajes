@@ -1,0 +1,77 @@
+
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://openlayers.org/en/v3.20.1/css/ol.css" type="text/css">
+    <style>
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+      #titulo{
+        text-align: center;
+      }
+      body {
+        margin: 0px;
+      }
+      .ol-control button {
+        background-color: rgba(46, 204, 113, 1);
+      }
+    </style>
+    <link href="styleMap.css" rel="stylesheet" />
+    <script src="https://openlayers.org/en/v3.20.1/build/ol.js" type="text/javascript"></script>
+    <title>Mapa turistico</title>
+  </head>
+  <body>
+    <h3 id="titulo">Mapa de zonas de buceo RD</h3>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+     // load vector
+     let vectorLayer = new ol.layer.Vector({
+   source: new ol.source.Vector({
+     format: new ol.format.GeoJSON({
+       defaultDataProjection: "EPSG:4326"
+     }),
+     url: "areas_protegidas.geojson",
+     attributions: [
+       new ol.Attribution({
+         html: "Areas protegidas RD Minieterio de Medio Ambiente"
+       })
+     ]
+   })
+ });
+
+ // create the map object
+
+ let map = new ol.Map({
+ target: "map",
+ layers: [
+   new ol.layer.Tile({
+     source: new ol.source.OSM()
+   }),
+   vectorLayer
+ ],
+ controls: [
+   new ol.control.Zoom(),
+   new ol.control.Rotate(),
+   new ol.control.Attribution(),
+   // NEW ZOOM CONTROLS
+   new ol.control.ZoomSlider(),
+   //new ol.control.MousePosition(),
+   new ol.control.ScaleLine(),
+   new ol.control.OverviewMap()
+ ],
+ interactions: ol.interaction.defaults().extend([
+   new ol.interaction.Select({
+     layers: [vectorLayer]
+   })
+ ]),
+ view: new ol.View({
+   center: [-7862924.2256, 2153383.96],
+   zoom: 8
+ })
+});
+
+
+    </script>
+  </body>
+</html>
