@@ -87,10 +87,7 @@ app.use(function(req, res, next) {
 // Index
 
 app.get("/", (req, res) => {
-  var title = "Bienvenido!";
-  res.render("index", {
-    title: title
-  });
+  res.render("index");
 });
 
 // about
