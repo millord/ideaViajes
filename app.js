@@ -10,11 +10,6 @@ const passport = require("passport");
 
 const app = express();
 
-// MAP Route
-app.get("/mapa", (req, res) => {
-  res.render("mapa/mapa");
-});
-
 // Load Routes
 
 const ideas = require("./routes/ideas");
