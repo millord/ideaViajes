@@ -1,4 +1,5 @@
 <div class="card card-body">
+
     <h3>Digital Journal | Create a Note</h3>
     <form action="/ideas" method="post">
         <div class="form-group">
@@ -10,5 +11,28 @@
             <textarea type="text" class="form-control" name="details" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+
     </form>
+
+</div>
+<div>
+    {{#each ideas}}
+    <div class="card-deck">
+        <div class="card">
+            <h5 class="card-header">{{title}}</h5>
+            <div class="card-body">
+                <p class="card-text">{{details}}</p>
+                <a class="btn btn-dark" href="/ideas/edit/{{id}}">Edit </a>
+
+                <form method="post" action="/ideas/{{id}}?_method=DELETE">
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <input type="submit" class="btn btn-danger " value="Delete" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>No notes listed</p>
+    {{/each}}
 </div>
