@@ -6,9 +6,10 @@
 ```
 1. Glone the rep
 2. cd into the folder
-3. run npm i
-4. 
+3. add your db connection insde the config file
+4. run npm i
+ 
 
 ```
 
-Juan Millord :upside_down_face:	
+Juan Millord :upside_down_face:	:ok_hand:
